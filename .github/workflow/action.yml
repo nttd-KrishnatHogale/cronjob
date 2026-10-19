@@ -1,0 +1,20 @@
+name: Trigger Action on a Cron Schedule
+
+on:
+  schedule:
+    - cron: '*/5 * * * 1'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Trigger Code Checkout
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display message
+        run: echo "GitHub Actions workflow executed successfully!"
+
+      - name: Display UTC time
+        run: date -u
