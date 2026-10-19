@@ -1,8 +1,7 @@
 name: Trigger Action on a Cron Schedule
-
 on:
   schedule:
-    - cron: '*/5 * * * 1'
+    - cron: '*/5 * * * *'  # Changed the trailing '1' to '*'
   workflow_dispatch:
 
 jobs:
@@ -12,9 +11,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Display message
         run: echo "GitHub Actions workflow executed successfully!"
-
       - name: Display UTC time
         run: date -u
